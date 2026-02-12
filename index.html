@@ -3,9 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>Édifices chrétiens en France</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 10px;
+      background: #f5f5f5;
+      margin: 0;
+    }
+
+    #map {
+      height: 90vh;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-  <h1>Carte des édifices chrétiens en France</h1>
-  <p>Projet en construction.</p>
+
+<h1>Carte des édifices chrétiens en France</h1>
+
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+  const map = L.map('map').setView([46.6, 2.5], 6);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap'
+  }).addTo(map);
+</script>
+
 </body>
 </html>
