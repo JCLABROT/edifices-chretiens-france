@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "nom": "Cathédrale Notre-Dame de Paris",
+    "lat": 48.852968,
+    "lon": 2.349902,
+    "type": "cathedrale",
+    "confession": "catholique",
+    "commune": "Paris"
+  }
+]
