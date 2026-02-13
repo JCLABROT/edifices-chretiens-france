@@ -41,6 +41,15 @@
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap'
   }).addTo(map);
+
+  // Ajouter un marqueur pour Notre-Dame de Paris
+  const marker = L.marker([48.852968, 2.349902]).addTo(map);
+
+  marker.bindPopup(`
+    <strong>Cathédrale Notre-Dame de Paris</strong><br>
+    Cathédrale<br>
+    Paris (75)
+  `);
 </script>
 
 </body>
