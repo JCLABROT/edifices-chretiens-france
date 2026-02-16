@@ -9,13 +9,12 @@
     "commune": "Paris"
   },
   {
-  "id": 2,
-  "nom": "Temple protestant du Saint-Esprit",
-  "lat": 48.8708,
-  "lon": 2.3098,
-  "type": "temple",
-  "confession": "protestant",
-  "commune": "Paris"
+    "id": 2,
+    "nom": "Temple protestant du Saint-Esprit",
+    "lat": 48.8708,
+    "lon": 2.3098,
+    "type": "temple",
+    "confession": "protestant",
+    "commune": "Paris"
   }
 ]
-
