@@ -60,4 +60,4 @@ marker.on("click", function() {
 
 document.getElementById("closeSidebar").addEventListener("click", function() {
   document.getElementById("sidebar").classList.remove("open");
-});
+})
