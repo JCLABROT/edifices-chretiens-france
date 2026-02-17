@@ -4,7 +4,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap'
 }).addTo(map);
 
-// Fonction pour définir la couleur selon la confession
+// Couleur selon confession
 function getColor(confession) {
   switch(confession) {
     case "catholique":
@@ -38,26 +38,33 @@ fetch('data/edifices.json')
       ).addTo(map);
 
       marker.bindPopup(`
-  <strong>${edifice.nom}</strong><br>
-  ${edifice.commune}<br>
-  ${edifice.type} - ${edifice.confession}<br>
-  <em>Cliquez à nouveau pour plus d'infos</em>
-`);
+        <strong>${edifice.nom}</strong><br>
+        ${edifice.commune}<br>
+        ${edifice.type} - ${edifice.confession}<br>
+        <em>Cliquez pour voir la fiche</em>
+      `);
 
-marker.on("click", function() {
+      marker.on("click", function() {
 
-  document.getElementById("sidebarContent").innerHTML = `
-    <h2>${edifice.nom}</h2>
-    <p><strong>Commune :</strong> ${edifice.commune}</p>
-    <p><strong>Type :</strong> ${edifice.type}</p>
-    <p><strong>Confession :</strong> ${edifice.confession}</p>
-    <p><strong>Latitude :</strong> ${edifice.lat}</p>
-    <p><strong>Longitude :</strong> ${edifice.lon}</p>
-  `;
+        document.getElementById("sidebarContent").innerHTML = `
+          <h2>${edifice.nom}</h2>
+          <p><strong>Commune :</strong> ${edifice.commune}</p>
+          <p><strong>Type :</strong> ${edifice.type}</p>
+          <p><strong>Confession :</strong> ${edifice.confession}</p>
+          <p><strong>Latitude :</strong> ${edifice.lat}</p>
+          <p><strong>Longitude :</strong> ${edifice.lon}</p>
+        `;
 
-  document.getElementById("sidebar").classList.add("open");
-});
+        document.getElementById("sidebar").classList.add("open");
 
+      });
+
+    });
+
+  })
+  .catch(error => console.error("Erreur :", error));
+
+// Bouton fermer sidebar
 document.getElementById("closeSidebar").addEventListener("click", function() {
   document.getElementById("sidebar").classList.remove("open");
-})
+});
