@@ -38,12 +38,25 @@ fetch('data/edifices.json')
       ).addTo(map);
 
       marker.bindPopup(`
-        <strong>${edifice.nom}</strong><br>
-        ${edifice.commune}<br>
-        ${edifice.type} - ${edifice.confession}
-      `);
+  <strong>${edifice.nom}</strong><br>
+  ${edifice.commune}<br>
+  ${edifice.type} - ${edifice.confession}<br>
+  <em>Cliquez à nouveau pour plus d'infos</em>
+`);
 
-    });
+marker.on("click", function() {
+
+  document.getElementById("sidebarContent").innerHTML = `
+    <h2>${edifice.nom}</h2>
+    <p><strong>Commune :</strong> ${edifice.commune}</p>
+    <p><strong>Type :</strong> ${edifice.type}</p>
+    <p><strong>Confession :</strong> ${edifice.confession}</p>
+    <p><strong>Latitude :</strong> ${edifice.lat}</p>
+    <p><strong>Longitude :</strong> ${edifice.lon}</p>
+  `;
+
+  document.getElementById("sidebar").classList.add("open");
+});
 
   })
   .catch(error => console.error("Erreur :", error));
