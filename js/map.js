@@ -61,3 +61,6 @@ marker.on("click", function() {
   })
   .catch(error => console.error("Erreur :", error));
 
+document.getElementById("closeSidebar").addEventListener("click", function() {
+  document.getElementById("sidebar").classList.remove("open");
+});
