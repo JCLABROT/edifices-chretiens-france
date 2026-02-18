@@ -87,3 +87,48 @@ fetch('data/edifices.json')
 document.getElementById("closeSidebar").addEventListener("click", function() {
   document.getElementById("sidebar").classList.remove("open");
 });
+
+let addMode = false;
+
+const addButton = document.getElementById("addButton");
+
+addButton.addEventListener("click", function() {
+  addMode = !addMode;
+  addButton.classList.toggle("active");
+});
+
+map.on("click", function(e) {
+
+  if (!addMode) return;
+
+  const lat = e.latlng.lat;
+  const lon = e.latlng.lng;
+
+  const nom = prompt("Nom de l'édifice :");
+  if (!nom) return;
+
+  const commune = prompt("Commune :");
+  const type = prompt("Type (église, cathédrale, temple...) :");
+  const confession = prompt("Confession (catholique, protestant, orthodoxe...) :");
+
+  const marker = L.circleMarker(
+    [lat, lon],
+    {
+      radius: 8,
+      fillColor: getColor(confession),
+      color: "#000",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.8
+    }
+  ).addTo(map);
+
+  marker.bindPopup(`
+    <strong>${nom}</strong><br>
+    ${commune}<br>
+    ${type} - ${confession}
+  `);
+
+  addMode = false;
+  addButton.classList.remove("active");
+});
