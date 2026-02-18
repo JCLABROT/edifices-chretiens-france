@@ -44,19 +44,38 @@ fetch('data/edifices.json')
         <em>Cliquez pour voir la fiche</em>
       `);
 
+      let clickCount = 0;
+
       marker.on("click", function() {
-
-        document.getElementById("sidebarContent").innerHTML = `
-          <h2>${edifice.nom}</h2>
-          <p><strong>Commune :</strong> ${edifice.commune}</p>
-          <p><strong>Type :</strong> ${edifice.type}</p>
-          <p><strong>Confession :</strong> ${edifice.confession}</p>
-          <p><strong>Latitude :</strong> ${edifice.lat}</p>
-          <p><strong>Longitude :</strong> ${edifice.lon}</p>
-        `;
-
-        document.getElementById("sidebar").classList.add("open");
-
+      
+        clickCount++;
+      
+        if (clickCount === 1) {
+          // Premier clic → popup seulement
+          marker.openPopup();
+      
+          // Reset après 500ms pour éviter accumulation infinie
+          setTimeout(() => {
+            clickCount = 0;
+          }, 500);
+      
+        } else if (clickCount === 2) {
+      
+          // Deuxième clic → ouvrir sidebar
+          document.getElementById("sidebarContent").innerHTML = `
+            <h2>${edifice.nom}</h2>
+            <p><strong>Commune :</strong> ${edifice.commune}</p>
+            <p><strong>Type :</strong> ${edifice.type}</p>
+            <p><strong>Confession :</strong> ${edifice.confession}</p>
+            <p><strong>Latitude :</strong> ${edifice.lat}</p>
+            <p><strong>Longitude :</strong> ${edifice.lon}</p>
+          `;
+      
+          document.getElementById("sidebar").classList.add("open");
+      
+          clickCount = 0;
+        }
+      
       });
 
     });
