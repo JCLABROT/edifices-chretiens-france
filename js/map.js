@@ -90,12 +90,17 @@ document.getElementById("closeSidebar").addEventListener("click", function() {
 
 let addMode = false;
 
-const addButton = document.getElementById("addButton");
+document.addEventListener("DOMContentLoaded", function() {
 
-addButton.addEventListener("click", function() {
-  addMode = !addMode;
-  addButton.classList.toggle("active");
+  const addButton = document.getElementById("addButton");
+
+  addButton.addEventListener("click", function() {
+    addMode = !addMode;
+    addButton.classList.toggle("active");
+  });
+
 });
+
 
 map.on("click", function(e) {
 
