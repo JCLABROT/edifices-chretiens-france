@@ -101,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-
 map.on("click", function(e) {
 
   if (!addMode) return;
@@ -109,31 +108,70 @@ map.on("click", function(e) {
   const lat = e.latlng.lat;
   const lon = e.latlng.lng;
 
-  const nom = prompt("Nom de l'édifice :");
-  if (!nom) return;
+  document.getElementById("sidebarContent").innerHTML = `
+    <h2>Ajouter un édifice</h2>
 
-  const commune = prompt("Commune :");
-  const type = prompt("Type (église, cathédrale, temple...) :");
-  const confession = prompt("Confession (catholique, protestant, orthodoxe...) :");
+    <label>Nom :</label>
+    <input type="text" id="formNom"><br><br>
 
-  const marker = L.circleMarker(
-    [lat, lon],
-    {
-      radius: 8,
-      fillColor: getColor(confession),
-      color: "#000",
-      weight: 1,
-      opacity: 1,
-      fillOpacity: 0.8
+    <label>Commune :</label>
+    <input type="text" id="formCommune"><br><br>
+
+    <label>Type :</label>
+    <select id="formType">
+      <option value="eglise">Église</option>
+      <option value="cathedrale">Cathédrale</option>
+      <option value="temple">Temple</option>
+      <option value="abbaye">Abbaye</option>
+    </select><br><br>
+
+    <label>Confession :</label>
+    <select id="formConfession">
+      <option value="catholique">Catholique</option>
+      <option value="protestant">Protestant</option>
+      <option value="orthodoxe">Orthodoxe</option>
+    </select><br><br>
+
+    <button id="saveEdifice">Ajouter</button>
+  `;
+
+  document.getElementById("sidebar").classList.add("open");
+
+  document.getElementById("saveEdifice").addEventListener("click", function() {
+
+    const nom = document.getElementById("formNom").value;
+    const commune = document.getElementById("formCommune").value;
+    const type = document.getElementById("formType").value;
+    const confession = document.getElementById("formConfession").value;
+
+    if (!nom || !commune) {
+      alert("Merci de remplir les champs obligatoires.");
+      return;
     }
-  ).addTo(map);
 
-  marker.bindPopup(`
-    <strong>${nom}</strong><br>
-    ${commune}<br>
-    ${type} - ${confession}
-  `);
+    const marker = L.circleMarker(
+      [lat, lon],
+      {
+        radius: 8,
+        fillColor: getColor(confession),
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+      }
+    ).addTo(map);
 
-  addMode = false;
-  addButton.classList.remove("active");
+    marker.bindPopup(`
+      <strong>${nom}</strong><br>
+      ${commune}<br>
+      ${type} - ${confession}
+    `);
+
+    document.getElementById("sidebar").classList.remove("open");
+
+    addMode = false;
+    document.getElementById("addButton").classList.remove("active");
+
+  });
+
 });
