@@ -18,7 +18,7 @@ function getColor(confession) {
 
 let edifices = [];
 
-function showNotification(message, duration = 2000) {
+function showNotification(message, duration = 3000) {
   const notif = document.getElementById("notification");
   notif.textContent = message;
   notif.classList.add("show");
