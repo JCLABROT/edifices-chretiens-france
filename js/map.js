@@ -18,6 +18,15 @@ function getColor(confession) {
 
 let edifices = [];
 
+function showNotification(message, duration = 2000) {
+  const notif = document.getElementById("notification");
+  notif.textContent = message;
+  notif.classList.add("show");
+
+  setTimeout(() => {
+    notif.classList.remove("show");
+  }, duration);
+}
 // =============================
 // Afficher les édifices
 // =============================
