@@ -136,6 +136,7 @@ map.on("click", function(e) {
       <option value="cathedrale">Cathédrale</option>
       <option value="temple">Temple</option>
       <option value="abbaye">Abbaye</option>
+      <option value="chapelle">Chapelle</option>
     </select><br><br>
 
     <label>Confession :</label>
