@@ -119,8 +119,14 @@ let addMode = false;
 const addButton = document.getElementById("addButton");
 
 addButton.addEventListener("click", function() {
+
   addMode = !addMode;
   addButton.classList.toggle("active");
+
+  if (addMode) {
+    showNotification("Cliquez sur l’emplacement de la carte pour ajouter un édifice.");
+  }
+
 });
 
 map.on("click", function(e) {
