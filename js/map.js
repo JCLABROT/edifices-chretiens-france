@@ -183,6 +183,8 @@ map.on("click", function(e) {
       const commune = document.getElementById("formCommune").value;
       const type = document.getElementById("formType").value;
       const confession = document.getElementById("formConfession").value;
+      const dateConstruction = document.getElementById("formDate").value;
+      const etat = document.getElementById("formEtat").value;
 
       if (!nom || !commune) {
         alert("Merci de remplir les champs obligatoires.");
@@ -195,6 +197,8 @@ map.on("click", function(e) {
         commune,
         type,
         confession,
+        dateConstruction,
+        etat,
         lat,
         lon
       };
