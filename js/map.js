@@ -70,6 +70,8 @@ function afficherEdifices(liste) {
           <p><strong>Commune :</strong> ${edifice.commune}</p>
           <p><strong>Type :</strong> ${edifice.type}</p>
           <p><strong>Confession :</strong> ${edifice.confession}</p>
+          <p><strong>Date de construction :</strong> ${edifice.dateConstruction || "Non renseignée"}</p>
+          <p><strong>État :</strong> ${edifice.etat || "Non renseigné"}</p>
           <p><strong>Latitude :</strong> ${edifice.lat}</p>
           <p><strong>Longitude :</strong> ${edifice.lon}</p>
         `;
