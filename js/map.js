@@ -161,6 +161,16 @@ map.on("click", function(e) {
       <option value="orthodoxe">Orthodoxe</option>
     </select><br><br>
 
+    <label>Date de construction :</label>
+    <input type="number" id="formDate" placeholder="Ex: 1850"><br><br>
+
+    <label>État :</label>
+    <select id="formEtat">
+      <option value="en activité">En activité</option>
+      <option value="autres activités">Autres activités</option>
+      <option value="en ruine / abandonnée">En ruine/ abandonnéee</option>
+    </select><br><br>
+
     <button id="saveEdifice">Ajouter</button>
   `;
 
